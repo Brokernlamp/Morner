@@ -1,0 +1,37 @@
+{
+    "persona_summary": "The ideal lead is a small, local business owner or manager in Chennai who makes decisions regarding shoe purchases for their business. This could include retailers, boutiques, sports clubs, or uniform suppliers. They are likely price-sensitive but also value quality and potentially local sourcing.",
+    "market_segment": "Small and Medium Enterprises (SMEs) in Chennai's retail, sports, and uniform sectors.",
+    "tasks": {
+        "google_maps": [
+            "shoe stores chennai",
+            "shoe retailers chennai",
+            "boutique shoes chennai",
+            "sports shoe shops chennai",
+            "uniform shoe suppliers chennai",
+            "wholesale shoes chennai"
+        ],
+        "justdial": [
+            "shoe shops in chennai",
+            "shoe retailers in chennai",
+            "shoe wholesalers in chennai",
+            "sports shoe dealers in chennai",
+            "uniform shoe suppliers in chennai"
+        ],
+        "indiamart": [
+            "shoes chennai - small business",
+            "wholesale shoes chennai - small quantity",
+            "shoe retailers chennai - local suppliers",
+            "sports shoes chennai - bulk orders",
+            "uniform shoes chennai - suppliers"
+        ]
+    },
+    "platform_logic": "Google Maps and Justdial will be used to identify local businesses. Indiamart will be used to find suppliers and wholesalers who cater to smaller order sizes. The search queries are designed to target businesses likely to be small or local by using terms like 'local', 'wholesale' (implying smaller order sizes), and focusing on specific business types (e.g., 'boutique', 'sports shoe shops').",
+    "lead_scoring_criteria": [
+        "Business located in Chennai.",
+        "Business type aligns with the target (retail, sports, uniform).",
+        "Positive reviews or ratings (Google Maps, Justdial).",
+        "Contact information readily available (phone number, website).",
+        "Presence on multiple platforms (e.g., Google Maps and Justdial) indicates a more established business.",
+        "Indication of small order capabilities (e.g., 'small quantity' or 'local supplier' in Indiamart listings)."
+    ]
+}
