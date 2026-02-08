@@ -15,7 +15,7 @@ class StrategyEngine:
 
         if self.use_aws:
             # 🖥️ AWS EC2 Configuration
-            self.base_url = "http://16.16.139.161:3000/v1"
+            self.base_url = "/v1"
             self.api_key = "not-needed"
             self.model_name = "llama3"
         else:
