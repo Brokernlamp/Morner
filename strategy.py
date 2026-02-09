@@ -33,28 +33,44 @@ class StrategyEngine:
     def get_search_blueprint(self, context):
         """Generates a multi-platform strategy based on firmographics."""
         
-        system_prompt = f"""You are a Lead Generation Architect. 
-Analyze the following constraints for the Indian market:
-- OFFERING: {context['offering']}
-- LOCATION: {context['location']}
-- TARGET SIZE: {context['target_size']}
-- DECISION MAKER: {context['decision_maker']}
+        system_prompt =  def get_search_blueprint(self, context):
+        """Generates a multi-platform strategy based on firmographics."""
+        
+        system_prompt = f"""You are a B2B/B2C Lead Generation Architect.
+The User (a Freelancer) is offering: {context['offering']}
+Location: {context['location']}
+Target Business/Client Size: {context['target_size']}
+Decision Maker: {context['decision_maker']}
+
+STRATEGIC OBJECTIVE:
+Generate search queries that find POTENTIAL CUSTOMERS who need this service. 
+DO NOT search for the service itself (which finds competitors). 
+Search for the 'Demand Centers' or 'Buyer Personas'.
+
+Examples:
+- If offering 'Maid Services', search for: "Upscale residential societies", "Working professional hubs", "New parents community".
+- If offering 'Web Dev', search for: "Local businesses with no website", "New startups".
 
 TASK:
-1. Define a 'Persona Summary' for the lead.
-2. Select 2-3 platforms (google_maps, justdial, indiamart, linkedin).
-3. Generate search queries that specifically target the BUSINESS SIZE requested.
+1. Define a 'Persona Summary' of the ideal BUYER.
+2. Select 2 platforms: 'google_maps' and 'general_web'.
+3. Generate 4 high-intent search queries that find where these BUYERS are located.
 
 Return ONLY a JSON object:
 {{
   "persona_summary": "string",
   "market_segment": "string",
   "tasks": {{
-    "platform_name": ["query1", "query2"]
+    "google_maps": ["query1", "query2", "query 3", "query4"],
+    "general_web": ["query1", "query2", "query 3", "query4"],
+    "linkedin": ["q1", "q2"],
+    "indiamart": ["q1", "q2"],
+    "sulekha": ["q1", "q2"]
   }},
-  "platform_logic": "string",
-  "lead_scoring_criteria": ["What makes a lead 'High Quality' for this specific target?"]
+  "platform_logic": "Why these queries will find CUSTOMERS and not COMPETITORS.",
+  "lead_scoring_criteria": ["Criteria for a high-value buyer"]
 }}"""
+
 
         try:
             # The model parameter now correctly pulls from self.model_name
