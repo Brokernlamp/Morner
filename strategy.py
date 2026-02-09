@@ -15,7 +15,7 @@ class StrategyEngine:
 
         if self.use_aws:
             # 🖥️ AWS EC2 Configuration
-            self.base_url = "/v1"
+            self.base_url = "http://16.16.100.183:3000/v1"
             self.api_key = "not-needed"
             self.model_name = "llama3"
         else:
@@ -33,8 +33,7 @@ class StrategyEngine:
     def get_search_blueprint(self, context):
         """Generates a multi-platform strategy based on firmographics."""
         
-        system_prompt =  def get_search_blueprint(self, context):
-        """Generates a multi-platform strategy based on firmographics."""
+        
         
         system_prompt = f"""You are a B2B/B2C Lead Generation Architect.
 The User (a Freelancer) is offering: {context['offering']}
@@ -52,25 +51,25 @@ Examples:
 - If offering 'Web Dev', search for: "Local businesses with no website", "New startups".
 
 TASK:
-1. Define a 'Persona Summary' of the ideal BUYER.
-2. Select 2 platforms: 'google_maps' and 'general_web'.
-3. Generate 4 high-intent search queries that find where these BUYERS are located.
+1. Identify 5 possible buyer personas.
+2. Select MIN 2 and MAX 4 platforms from the pool based on the highest probability of lead quality.
+3. For each selected platform, generate 4 'Ecosystem' queries (find the buyer, not the competitor).
 
 Return ONLY a JSON object:
 {{
   "persona_summary": "string",
-  "market_segment": "string",
+  "selected_platforms": [
+    {{"name": "platform_name", "probability_score": "0.0-1.0", "reasoning": "string"}}
+  ],
   "tasks": {{
-    "google_maps": ["query1", "query2", "query 3", "query4"],
-    "general_web": ["query1", "query2", "query 3", "query4"],
-    "linkedin": ["q1", "q2"],
-    "indiamart": ["q1", "q2"],
-    "sulekha": ["q1", "q2"]
+    "google_maps": ["q1", "q2", "q3", "q4"],
+    "justdial": ["q1", "q2", "q3", "q4"],
+    "sulekha": ["q1", "q2", "q3", "q4"],
+    "indiamart": ["q1", "q2", "q3", "q4"],
+    "practo": ["q1", "q2", "q3", "q4"]
   }},
-  "platform_logic": "Why these queries will find CUSTOMERS and not COMPETITORS.",
-  "lead_scoring_criteria": ["Criteria for a high-value buyer"]
+  "market_logic": "Explain why these specific platforms will outperform the others for this niche."
 }}"""
-
 
         try:
             # The model parameter now correctly pulls from self.model_name
@@ -82,6 +81,10 @@ Return ONLY a JSON object:
             )
             
             raw_content = response.choices[0].message.content.strip()
+
+            print(f"\n [RAW AI RESPONSE]:\n{raw_content}\n" + "─"*60)
+            
+            
             
             # Use regex to find the JSON block in case the model adds extra text
             json_match = re.search(r'\{.*\}', raw_content, re.DOTALL)
